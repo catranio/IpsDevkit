@@ -33,7 +33,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: latest
 
-      - name: Build image
+      - name: Build image base
         uses: docker/build-push-action@v4
         with:
           context: ./base
@@ -41,5 +41,16 @@ jobs:
           file: ./base/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      
+      - name: Build image avconv
+        uses: docker/build-push-action@v4
+        with:
+          context: ./projects
+          push: true
+          file: ./projects/avconv.dockerfile
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}/avconv
           cache-from: type=gha
           cache-to: type=gha,mode=max
