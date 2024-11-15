@@ -4,8 +4,12 @@ on:
         name:
             description: 'Name of building image'
             type: string
+        dir:
+          description: 'Path to dockerfile locate'
+          required: true
+          type: string
         dockerfile:
-            description: 'Path to dockerfile locate'
+            description: 'dockerfile name'
             required: true
             type: string
 
@@ -41,8 +45,9 @@ jobs:
       - name: Build image ${{ inputs.name }}
         uses: docker/build-push-action@v6
         with:
+          context: ${{ inputs.dir }}
           push: true
-          file: ${{ inputs.dockerfile }}
+          file: ${{ inputs.dir }}/${{ inputs.dockerfile }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
