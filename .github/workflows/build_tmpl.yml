@@ -8,7 +8,7 @@ on:
             type: string
 
 jobs:
-  build-base-templ:
+  build-image-templ:
     runs-on: ubuntu-latest
 
     permissions:

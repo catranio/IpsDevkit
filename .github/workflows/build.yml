@@ -8,7 +8,7 @@ jobs:
   build-base:
     uses: ./.github/workflows/build_tmpl.yml
     with:
-      dir: "./base"
+      dir: "./base/gcc"
   build-avconv:
     needs: build-base
     uses: ./.github/workflows/build_tmpl.yml
