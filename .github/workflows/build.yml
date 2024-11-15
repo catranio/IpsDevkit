@@ -8,10 +8,10 @@ jobs:
   build-base:
     uses: ./.github/workflows/build_tmpl.yml
     with:
-      dir: "./base"
+      dockerfile: "./base/gcc.dockerfile"
   build-avconv:
     needs: build-base
     uses: ./.github/workflows/build_tmpl.yml
     with:
       name: "avconv"
-      dir: "./projects"
+      dockerfile: "./projects/avconv.dockerfile"

@@ -2,8 +2,10 @@ on:
   workflow_call:
     inputs:
         name:
+            description: 'Name of building image'
             type: string
-        dir:
+        dockerfile:
+            description: 'Path to dockerfile locate'
             required: true
             type: string
 
@@ -39,9 +41,8 @@ jobs:
       - name: Build image ${{ inputs.name }}
         uses: docker/build-push-action@v6
         with:
-          context: ${{ inputs.dir }}
           push: true
-          file: ${{ inputs.dir }}/${{ inputs.name == '' && 'gcc' || '' }}.dockerfile
+          file: ${{ inputs.dockerfile }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
