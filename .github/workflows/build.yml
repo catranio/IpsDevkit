@@ -10,6 +10,7 @@ jobs:
     with:
       dir: "./base"
   build-avconv:
+    needs: build-base
     uses: ./.github/workflows/build_tmpl.yml
     with:
       name: "avconv"

@@ -33,7 +33,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}${{ inputs.name == '' && '' || '-${{ inputs.name }}'}}
+          images: ghcr.io/${{ github.repository }}${{ inputs.name == '' && '' || '-'}}${{ inputs.name }}
           tags: latest
 
       - name: Build image ${{ inputs.name }}
