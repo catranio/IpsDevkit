@@ -16,11 +16,13 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: docker/setup-buildx-action@v3
+      - name: Setup docker builder
+        uses: docker/setup-buildx-action@v3
 
       - name: Log in to ghcr.io
         uses: docker/login-action@v2
@@ -33,7 +35,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}${{ inputs.name == '' && '' || '-'}}${{ inputs.name }}
+          images: ghcr.io/${{ github.repository }}${{ inputs.name != '' && '-' || '' }}${{ inputs.name }}
           tags: latest
 
       - name: Build image ${{ inputs.name }}
