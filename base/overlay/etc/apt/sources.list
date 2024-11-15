@@ -1,0 +1,12 @@
+# Testing repository – main, contrib and non-free branches
+deb http://ftp.ru.debian.org/debian testing main non-free contrib
+deb-src http://ftp.ru.debian.org/debian testing main non-free contrib
+
+# Testing security updates repository
+deb http://ftp.ru.debian.org/debian-security testing-security main contrib non-free
+deb-src http://ftp.ru.debian.org/debian-security/ testing-security main contrib non-free
+
+# Unstable repo main, contrib and non-free branches, no security updates here
+deb http://ftp.ru.debian.org/debian unstable main non-free contrib
+deb-src http://ftp.ru.debian.org/debian unstable main non-free contrib
+
