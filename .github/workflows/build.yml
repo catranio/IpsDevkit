@@ -5,15 +5,15 @@ on:
     branches: master
 
 jobs:
-  build-base:
+  build-base-gcc:
     uses: ./.github/workflows/build_tmpl.yml
     with:
+      name: "gcc"
       dir: "./base"
       dockerfile: "gcc.dockerfile"
-  build-avconv:
-    needs: build-base
+  build-base-clnag:
     uses: ./.github/workflows/build_tmpl.yml
     with:
-      name: "avconv"
-      dir: "./projects"
-      dockerfile: "avconv.dockerfile"
+      name: "clang"
+      dir: "./base"
+      dockerfile: "clang.dockerfile"
