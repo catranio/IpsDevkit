@@ -9,10 +9,4 @@ RUN apt-get update \
     libavdevice-dev \
     libavformat-dev \
     libavutil-dev \
-    && apt-get clean all \
-    && rm -rf /usr/share/doc/* \
-    /usr/share/man/?? \
-    /usr/share/man/??_* \
-    /usr/share/locale/* \
-    /var/cache/debconf/*-old \
-    /var/lib/apt/lists/*
+    && apt-get clean all 
