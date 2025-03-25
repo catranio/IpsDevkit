@@ -1,19 +1,21 @@
-FROM debian:bookworm-slim
+FROM ubuntu:plucky
 
-COPY overlay /
-
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y -t testing \
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install --no-install-recommends -y \
+    # develop support programs
     ca-certificates \
     cmake \
     git \
-    gdb \
     ninja-build \
     pkg-config \
-    libssl-dev \
-    && apt-get install --no-install-recommends -y -t unstable \
+    # llvm tools
+    llvm \
     clang \
+    clang-tools \
+    gdb \
     libclang-rt-dev \
     libc++-dev \
-    llvm \
-    && apt-get clean all
+    # system libs
+    liburing-dev \
+    libssl-dev \
+    && apt-get clean all 
